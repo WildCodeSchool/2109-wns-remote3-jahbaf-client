@@ -3,25 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@angular-devkit/schematics-cli": "^13.0.0-next.9",
+    "@apollo/client": "^3.4.16",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.0",
+    "graphql": "^15.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
+    "sass": "^1.43.4",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:tooling": "cd tooling && tsc -p tsconfig.json",
+    "create:component": "yarn run schematics ./tooling:component --dry-run=false",
+    "create:page": "yarn run schematics ./tooling:page --dry-run=false",
+    "create:store": "yarn run schematics ./tooling:store --dry-run=false",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "schematics": "./tooling/src/collection.json",
+  "keywords": [
+    "schematics"
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -39,5 +54,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@angular-devkit/core": "^12.2.12",
+    "@angular-devkit/schematics": "^12.2.12",
+    "@types/graphql": "^14.5.0",
+    "@types/react-router": "^5.1.17",
+    "@types/react-router-dom": "^5.3.2",
+    "@types/redux": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-react": "^7.26.1",
+    "husky": "^7.0.4"
   }
 }

@@ -1,0 +1,7 @@
+interface <%= classify(name) %>FixturesInterface {
+    
+}
+
+export default class <%= classify(name) %>Fixtures extends Fixtures implements <%= classify(name) %>FixturesInterface {
+
+}

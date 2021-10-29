@@ -1,0 +1,2 @@
+export * from './<%=camelize(name)%>.actions';
+export * from './<%=camelize(name)%>.reducer';

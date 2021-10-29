@@ -1,0 +1,12 @@
+import { Action } from 'redux';
+
+const initialState = {
+
+};
+
+export const <%=camelize(name)%>Reducer = (state = initialState, action: Action) => {
+    switch (action.type) {
+    default:
+        return state;
+    }
+};

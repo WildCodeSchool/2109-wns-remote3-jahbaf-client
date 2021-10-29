@@ -1,0 +1,7 @@
+import { <%= classify(name) %>Props } from './<%= classify(name) %>.props';
+
+import './<%= classify(name) %>.style.scss';
+
+export const <%= classify(name) %> = ({}: <%= classify(name) %>Props) => (
+    <div></div>
+);
