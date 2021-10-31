@@ -30,6 +30,8 @@
     "create:component": "yarn run schematics ./tooling:component --dry-run=false",
     "create:page": "yarn run schematics ./tooling:page --dry-run=false",
     "create:store": "yarn run schematics ./tooling:store --dry-run=false",
+    "prepare": "husky install",
+    "lint": "lint-staged",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -70,6 +72,15 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-react": "^7.26.1",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "./node_modules/.bin/eslint --max-warnings=0 --fix",
+      "pretty-quick"
+    ]
   }
 }

@@ -6,8 +6,8 @@ export const Routes = () => {
         <Switch>
             {
                 routes.map((route: RouteType) => (
-                    <Route path={route.path} key={route.path}>
-                        {route.component}
+                    <Route path={route.path} key={route.path} exact={route.exact || false}>
+                        <route.component {...route.props}/>
                     </Route>
                 ))
             }
