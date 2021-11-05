@@ -4,12 +4,20 @@ $primary-dark: #D7722F;
 
 $themes: (
   light: (
-    backgroundColor: #FFFFFF,
-    textColor: #000000
+    backgroundColor: #ddd,
+    textColor: #222,
+    lightBorder: #f3fbff,
+    darkBorder: #808fb6,
+    deepBg: #9E9E9E,
+    gradientBg: radial-gradient(ellipse at top, #E8E8E8, #C8C8C8)
   ),
   dark: (
     backgroundColor: #243353,
-    textColor: #FFFFFF
+    textColor: #eee,
+    lightBorder: #3f5893,
+    darkBorder: #050a18,
+    deepBg: #1B2335,
+    gradientBg: radial-gradient(ellipse at top, #364159, #1B2335)
   ),
 );
 
