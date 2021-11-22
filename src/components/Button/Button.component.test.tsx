@@ -1,16 +1,16 @@
 import { render } from '@testing-library/react';
 import { Button } from './Button.component';
-
-const component = () => {
-    return <Button/>;
-};
+import ButtonFixtures from './Button.fixtures';
 
 describe('[Component] Button', () => {
     let container: any = null;
+    let fixtures: ButtonFixtures;
+    const onClickMock = jest.fn();
 
     beforeEach(() => {
         container = document.createElement('div');
         document.body.appendChild(container);
+        fixtures = new ButtonFixtures();
     });
 
     afterEach(() => {
@@ -18,8 +18,17 @@ describe('[Component] Button', () => {
         container = null;
     });
 
-    it('should display the correct page title', () => {
-        render(component(), container);
-        expect(document.title).toEqual('Ttest');
+    it('should display the correct button content', () => {
+        render(<Button content="Test" onClickAction={onClickMock}/>, container);
+
+        expect(fixtures.getButton().textContent).toEqual('Test');
+    });
+
+    it('should trigger the click action when button is clicked', () => {
+        render(<Button content="Test" onClickAction={onClickMock}/>, container);
+
+        const button = fixtures.getButton();
+        button.click();
+        expect(onClickMock).toHaveBeenCalled();
     });
 });

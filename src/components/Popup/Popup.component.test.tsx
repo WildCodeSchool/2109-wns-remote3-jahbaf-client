@@ -1,16 +1,15 @@
 import { render } from '@testing-library/react';
 import { Popup } from './Popup.component';
-
-const component = () => {
-    return <Popup/>;
-};
+import PopupFixtures from './Popup.fixtures';
 
 describe('[Component] Popup', () => {
     let container: any = null;
+    let fixtures: PopupFixtures;
 
     beforeEach(() => {
         container = document.createElement('div');
         document.body.appendChild(container);
+        fixtures = new PopupFixtures();
     });
 
     afterEach(() => {
@@ -18,8 +17,19 @@ describe('[Component] Popup', () => {
         container = null;
     });
 
-    it('should display the correct page title', () => {
-        render(component(), container);
-        expect(document.title).toEqual('Ttest');
+    it('should not have a motion class when not provided', () => {
+        render(<Popup><div>test</div></Popup>, container);
+
+        const popup = fixtures.getPopup();
+
+        expect(popup.classList.contains('enter-left')).toBeFalsy();
+    });
+
+    it('should have a motion class when provided', () => {
+        render(<Popup motion="enter-left"><div>test</div></Popup>, container);
+
+        const popup = fixtures.getPopup();
+
+        expect(popup.classList.contains('enter-left')).toBeTruthy();
     });
 });
