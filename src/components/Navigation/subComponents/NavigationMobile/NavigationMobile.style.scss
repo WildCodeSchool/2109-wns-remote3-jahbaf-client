@@ -1,0 +1,77 @@
+@import 'assets/partials/main';
+
+.navigation-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    h1{
+        color: $primary;
+        margin: $spacer;
+    }
+
+    nav{
+        position: absolute;
+        @include themify {
+            background: themed( 'reverseBgColor' );
+        }
+        height: 100vh;
+        top: 0;
+        width: 300px;
+        right: 0;
+        transition-duration: .4s;
+        transition-timing-function: ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a{
+            @include themify {
+                color: themed( 'reverseTextColor' );
+            }
+        }
+        &.opened{
+            transform: translateX(0);
+        }
+        &.closed{
+            transform: translateX(300px);
+        }
+    }
+
+    button{
+        position: fixed;
+        bottom: $spacer;
+        right: $spacer;
+        z-index: 4;
+        height: 60px;
+        width: 60px;
+        border-radius: 30px;
+        transition-duration: .4s;
+        transition-timing-function: ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 60%;
+        }
+    }
+    .button-{
+        &opened{
+            @include themify {
+                background-color: themed( 'backgroundColor' );
+            }
+        }
+        &closed{
+            @include themify {
+                background-color: themed( 'reverseBgColor' );
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .navigation-mobile{
+        display: none;
+    }
+}
