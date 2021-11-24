@@ -14,7 +14,6 @@ export const Card = ({ children, onCloseAction, isClosable, title }: CardProps) 
                 <hr/>
             </div>
         )}
-
         { children }
     </div>
 );

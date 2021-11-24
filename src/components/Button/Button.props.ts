@@ -4,4 +4,7 @@ export interface ButtonProps {
 
     /** Action to trigger when button is clicked */
     onClickAction: () => any
+
+    /** Disable the button if needed */
+    isDisabled?: boolean
 }
