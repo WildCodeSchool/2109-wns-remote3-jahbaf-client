@@ -6,4 +6,6 @@ body {
         background-color: themed( 'backgroundColor' );
     }
     font-family: arial;
+    width: 100vw;
+    overflow-x: hidden;
 }
