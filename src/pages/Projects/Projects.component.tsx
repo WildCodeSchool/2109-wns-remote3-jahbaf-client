@@ -18,7 +18,7 @@ export const Projects = () => {
     useEffect(() => {
         if (data?.createProject) {
             /** Redirect to the project page if data is available when project is created */
-            history.push(`/projet/${data.createProject.project.id}`);
+            history.push(`/projet/${data.createProject.id}`);
         }
     }, [data]);
 
