@@ -21,7 +21,7 @@ export const Projects = () => {
     useEffect(() => {
         if (data?.createProject) {
             /** Redirect to the project page if data is available when project is created */
-            history.push(`/projet/${data.createProject.project.id}`);
+            history.push(`/projet/${data.createProject.id}`);
             dispatch(displayNotification('success', 'Votre projet a été créé avec succés'));
         }
         if (error) { dispatch(displayNotification('error', 'Une erreur interne est survenue, veuillez réessayer.')); }
