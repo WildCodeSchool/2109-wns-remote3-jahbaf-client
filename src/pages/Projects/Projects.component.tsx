@@ -1,13 +1,16 @@
 import { useMutation } from '@apollo/client';
 import { Card, Popup, ProjectCreationContent } from 'components';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { CREATE_PROJECT } from 'services/projects.service';
+import { displayNotification } from 'store/notification';
 import './Projects.style.scss';
 
 export const Projects = () => {
     const [isProjectCreationOpened, toggleProjectCreationPopup] = useState(false);
-    const [addProject, { data, loading }] = useMutation(CREATE_PROJECT);
+    const dispatch = useDispatch();
+    const [addProject, { data, loading, error }] = useMutation(CREATE_PROJECT);
     const history = useHistory();
 
     useEffect(() => {
@@ -19,8 +22,10 @@ export const Projects = () => {
         if (data?.createProject) {
             /** Redirect to the project page if data is available when project is created */
             history.push(`/projet/${data.createProject.id}`);
+            dispatch(displayNotification('success', 'Votre projet a été créé avec succés'));
         }
-    }, [data]);
+        if (error) { dispatch(displayNotification('error', 'Une erreur interne est survenue, veuillez réessayer.')); }
+    }, [data, error]);
 
     return (
         <div className="projects-page">
