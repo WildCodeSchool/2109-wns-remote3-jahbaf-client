@@ -15,7 +15,7 @@ export const NavigationMobile = () => {
         <div className="navigation-mobile">
             <h1>JAHBAF</h1>
             <nav className={isMenuOpen ? 'opened' : 'closed'}>
-                <Link onClick={onToggleMenu} to="">Support</Link>
+                <Link onClick={onToggleMenu} to="/projets">Projets</Link>
             </nav>
             <button className={isMenuOpen ? 'button-opened' : 'button-closed'} onClick={onToggleMenu}>
                 <img src={isMenuOpen ? LogoFerme : Logo}/>

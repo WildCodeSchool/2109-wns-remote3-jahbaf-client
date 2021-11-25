@@ -6,7 +6,7 @@ export const NavigationDesktop = () => (
     <div className="navigation-desktop">
         <h1>JAHBAF</h1>
         <nav>
-            <Link to="">Support</Link>
+            <Link to="/projets">Projets</Link>
         </nav>
     </div>
 );

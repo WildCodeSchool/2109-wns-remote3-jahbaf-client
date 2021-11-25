@@ -1,0 +1,24 @@
+@import 'assets/partials/main';
+
+.projectCreationContent {
+    h2, .content {
+        @include themify {
+            color: themed( 'textColor' );
+        }
+    }
+    .content {
+        height: 300px;
+    }
+    h2{
+        margin-top: $spacer;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        .loader_outer{
+            margin-right: calc($spacer * 1.5);
+        }
+    }
+}
