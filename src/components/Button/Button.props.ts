@@ -4,4 +4,7 @@ export interface ButtonProps {
 
     /** Action to trigger when button is clicked */
     onClickAction: () => any
+
+    /** Width to be applied to the button */
+    width?: string;
 }

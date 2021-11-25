@@ -3,8 +3,8 @@ import { CardProps } from './Card.props';
 
 import './Card.style.scss';
 
-export const Card = ({ children, onCloseAction, isClosable, title }: CardProps) => (
-    <div className="card">
+export const Card = ({ children, onCloseAction, isClosable, title, style }: CardProps) => (
+    <div style={style} className="card">
         { (title || isClosable) && (
             <div className="card__header">
                 <div className="card__header__content" style={{ justifyContent: title ? 'space-between' : 'flex-end' }}>

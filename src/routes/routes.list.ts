@@ -1,5 +1,7 @@
 // import { Connexion } from 'pages/Connexion';
 
+import Login from 'components/Login/Login.component';
+
 /* eslint no-unused-vars: 0 */
 export enum NeedsAuth {
     YES,
@@ -16,9 +18,9 @@ export type RouteType = {
 }
 
 export const routes: RouteType[] = [
-    // {
-    //     path: '/connexion',
-    //     component: Connexion,
-    //     needsAuth: false
-    // }
+    {
+        path: '/login',
+        component: Login,
+        needsAuth: false
+    }
 ];
