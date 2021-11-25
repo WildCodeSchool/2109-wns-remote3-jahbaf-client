@@ -10,3 +10,14 @@ export const CREATE_PROJECT = gql`
         }
       }
     }`;
+
+export const GET_PROJECT_BY_ID = gql`
+mutation FindProjectById($id: String!) {
+  findProjectById(id: $id) {
+    project {
+        id,
+        name,
+        description
+    }
+  }
+}`;
