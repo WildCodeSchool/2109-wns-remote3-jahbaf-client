@@ -6,12 +6,16 @@ import NavigationMobileFixtures from './NavigationMobile.fixtures';
 describe('[Component] NavigationMobile', () => {
     let container: any = null;
     let fixtures: NavigationMobileFixtures;
+    const mockSwitcher = jest.fn();
 
     beforeEach(() => {
         container = document.createElement('div');
         document.body.appendChild(container);
         fixtures = new NavigationMobileFixtures();
-        render(<BrowserRouter><NavigationMobile/></BrowserRouter>, container);
+        render(
+            <BrowserRouter>
+                <NavigationMobile currentTheme='dark' onSwitchTheme={mockSwitcher} />
+            </BrowserRouter>, container);
     });
 
     afterEach(() => {
