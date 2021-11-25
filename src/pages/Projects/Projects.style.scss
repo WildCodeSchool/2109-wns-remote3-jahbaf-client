@@ -14,5 +14,12 @@
         color: $primary;
         height: 230px;
         width: 150px;
+        margin: 10px;
     }
+
+        .projects--wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
 }
