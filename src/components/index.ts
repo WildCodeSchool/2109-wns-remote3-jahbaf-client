@@ -4,3 +4,4 @@ export * from './CloseButton';
 export * from './Loader';
 export * from './Popup';
 export * from './ProjectCreationContent';
+export * from './Notification';
