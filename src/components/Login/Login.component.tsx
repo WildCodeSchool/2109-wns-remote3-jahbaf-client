@@ -6,6 +6,9 @@ import waves from 'assets/images/waves.svg';
 import beaver from 'assets/images/beaver.png';
 import { ILoginProps } from './Login.props';
 import './Login.style.scss';
+import { emailRegexp, passwordRegexp } from 'helpers/loginValidationPolicy';
+
+//
 
 const Login = () => {
     const [error, setError] = useState({
@@ -17,6 +20,15 @@ const Login = () => {
         password: '',
         shouldRemember: false
     });
+    // Créer enum avec message d'erreur
+    // function isValid (value: string, regexp: RegExp): void {
+    //     if (!value.match(regexp)) {
+    //         setError({ ...error, [value]: 'Invalid email address' });
+    //     } else {
+    //         setError({ ...error, [value]: '' });
+    //     }
+    // }
+
     /**
      * To use this function, you need to pass the name of the input through. It allows us to
      * know which key needs to be filled in.
@@ -29,8 +41,11 @@ const Login = () => {
 
     function onLoginSubmit (): void {
         const { email, password } = userInput;
-        if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+        if (!email.match(emailRegexp)) {
             setError({ ...error, email: 'Invalid email address' });
+        }
+        if (!password.match(passwordRegexp)) {
+            setError({ ...error, password: 'Votre mot de passe doit contenir au moins 8 caractères, 1 majuscule et un caractère spécial' });
         }
     }
 
@@ -57,7 +72,7 @@ const Login = () => {
                             type="password"
                             onChange={onInputChange}
                         />
-                        {error.email && <p className="error">{error.email}</p>}
+                        {error.password && <p className="error">{error.password}</p>}
                         <InputForm
                             isRequired
                             type="checkbox"
