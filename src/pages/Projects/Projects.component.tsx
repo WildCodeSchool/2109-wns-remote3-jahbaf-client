@@ -1,13 +1,15 @@
-import { useMutation } from '@apollo/client';
-import { Card, Popup, ProjectCreationContent } from 'components';
+import { useMutation, useQuery } from '@apollo/client';
+import { Card, Popup, ProjectCard, ProjectCreationContent } from 'components';
+import { Project } from 'models';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { CREATE_PROJECT } from 'services/projects.service';
+import { CREATE_PROJECT, FIND_MANY_PROJECTS } from 'services/projects.service';
 import './Projects.style.scss';
 
 export const Projects = () => {
     const [isProjectCreationOpened, toggleProjectCreationPopup] = useState(false);
     const [addProject, { data, loading }] = useMutation(CREATE_PROJECT);
+    const projects = useQuery<Project[]>(FIND_MANY_PROJECTS);
     const history = useHistory();
 
     useEffect(() => {
@@ -25,6 +27,9 @@ export const Projects = () => {
     return (
         <div className="projects-page">
             <h1>Mes projets</h1>
+            {
+                projects.data && projects.data.map((project: Project) => <ProjectCard key={project.id} project={project}/>)
+            }
             <button className="add-project" onClick={() => toggleProjectCreationPopup(true)}>+</button>
             {isProjectCreationOpened &&
             <Popup motion="enter-left">
