@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { displayNotification } from 'store/notification';
 import { FIND_ONE_PROJECT_BY_ID } from 'services/projects.service';
-import { ProjectCard } from 'components';
+import { Loader, ProjectCard } from 'components';
 import './Project.style.scss';
 
 export const Project = () => {
@@ -19,7 +19,7 @@ export const Project = () => {
     }, [data, error]);
     return (
         <div className="project-page">
-            {loading ? <div>Loading...</div> : <ProjectCard project={data?.findProjectById}/>}
+            {loading ? <Loader /> : <ProjectCard project={data?.findProjectById}/>}
         </div>
     );
 };
