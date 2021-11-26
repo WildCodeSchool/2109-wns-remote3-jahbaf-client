@@ -7,4 +7,14 @@ export const CREATE_PROJECT = gql`
           name,
           description
       }
-    }`;
+}`;
+
+export const FIND_ONE_PROJECT_BY_ID = gql`
+    query FindProjectById($id: String!) {
+        findProjectById(id: $id) {
+            id
+            name
+            description
+        }
+    }
+`;
