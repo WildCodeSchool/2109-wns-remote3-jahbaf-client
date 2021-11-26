@@ -2,13 +2,16 @@ import { useMutation } from '@apollo/client';
 import { Card, Popup, ProjectCreationContent } from 'components';
 import { Project } from 'components/Project';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { CREATE_PROJECT_MUTATION } from 'services/projects.service';
+import { displayNotification } from 'store/notification';
 import './Projects.style.scss';
 
 export const Projects = () => {
     const [isProjectCreationOpened, toggleProjectCreationPopup] = useState(false);
-    const [addProject, { data, loading }] = useMutation(CREATE_PROJECT_MUTATION);
+    const dispatch = useDispatch();
+    const [addProject, { data, loading, error }] = useMutation(CREATE_PROJECT_MUTATION);
     const history = useHistory();
 
     useEffect(() => {
@@ -20,8 +23,10 @@ export const Projects = () => {
         if (data?.createProject) {
             /** Redirect to the project page if data is available when project is created */
             history.push(`/projet/${data.createProject.id}`);
+            dispatch(displayNotification('success', 'Votre projet a été créé avec succés'));
         }
-    }, [data]);
+        if (error) { dispatch(displayNotification('error', 'Une erreur interne est survenue, veuillez réessayer.')); }
+    }, [data, error]);
     const mamadatata = Array.from({ length: 10 }).map((_, i) => {
         return { name: `Projet ${i}`, description: 'loremdsfdsjfdslmkfj' };
     });
@@ -40,11 +45,11 @@ export const Projects = () => {
                 })}
             </div>
             {isProjectCreationOpened &&
-            <Popup motion="enter-left">
-                <Card title="Créez un nouveau projet" isClosable={true} onCloseAction={() => toggleProjectCreationPopup(false)}>
-                    <ProjectCreationContent onSubmitAction={addProject} isLoading={loading}/>
-                </Card>
-            </Popup>}
+                <Popup motion="enter-left">
+                    <Card title="Créez un nouveau projet" isClosable={true} onCloseAction={() => toggleProjectCreationPopup(false)}>
+                        <ProjectCreationContent onSubmitAction={addProject} isLoading={loading} />
+                    </Card>
+                </Popup>}
         </div>
     );
 };

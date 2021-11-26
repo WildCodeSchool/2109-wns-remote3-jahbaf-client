@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     position: fixed;
+    z-index: 6;
     top: $spacer;
     right: $spacer;
     padding: calc($spacer * 1.5);
