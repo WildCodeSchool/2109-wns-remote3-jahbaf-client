@@ -13,7 +13,11 @@
     border-top: 2px solid #FFBA8C;
     border-bottom: 2px solid #974A17;
     box-shadow: 0 3px 2px 0 #00000033;
-    
+    &:disabled{
+        opacity: .5;
+        cursor: initial;
+        pointer-events: none;
+    }
     transition-duration: .1s;
     transition-timing-function: ease-in-out;
     span {

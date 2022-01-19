@@ -1,4 +1,5 @@
-// import { Connexion } from 'pages/Connexion';
+import { Projects } from 'pages/Projects';
+import { Project } from 'pages/Project';
 
 import Login from 'components/Login/Login.component';
 
@@ -6,21 +7,21 @@ import Login from 'components/Login/Login.component';
 export enum NeedsAuth {
     YES,
     NO,
-    DONT_MATTER
+    DONT_MATTER,
 }
 
 export type RouteType = {
-    path: string,
-    component: () => JSX.Element,
-    needsAuth: boolean,
-    props?: any,
-    exact?: boolean
-}
+    path: string;
+    component: (props: any) => JSX.Element;
+    needsAuth: NeedsAuth;
+    props?: any;
+    exact?: boolean;
+};
 
 export const routes: RouteType[] = [
     {
         path: '/login',
         component: Login,
-        needsAuth: false
+        needsAuth: NeedsAuth.NO
     }
 ];

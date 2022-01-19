@@ -5,7 +5,9 @@ $primary-dark: #D7722F;
 $themes: (
   light: (
     backgroundColor: #ddd,
+    reverseBgColor: #243353,
     textColor: #222,
+    reverseTextColor: #eee,
     lightBorder: #f3fbff,
     darkBorder: #808fb6,
     deepBg: #9E9E9E,
@@ -13,7 +15,9 @@ $themes: (
   ),
   dark: (
     backgroundColor: #243353,
+    reverseBgColor: #ddd,
     textColor: #eee,
+    reverseTextColor: #222,
     lightBorder: #3f5893,
     darkBorder: #050a18,
     deepBg: #1B2335,

@@ -1,0 +1,57 @@
+@import 'assets/partials/main';
+
+.statusBar {
+    @include themify {
+        background-color: themed( 'deepBg' );
+        border-top: 1px solid themed('darkBorder');
+        border-bottom: 1px solid themed('lightBorder');
+    }
+    padding: $spacer;
+    box-sizing: border-box;
+    width: 600px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include radius;
+    &>span{
+        display: flex;
+        align-items: center;
+        
+        .index{
+            @include themify {
+                color: themed( 'textColor' );
+                background-color: themed( 'backgroundColor' );
+            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            width: 30px;
+            border-radius: 15px;
+            margin-right: 10px;
+            font-size: .8rem;
+            font-weight: 600;
+            transition-duration: .4s;
+        }
+        .name{
+            @include themify {
+                color: themed( 'textColor' );
+            }
+            font-size: .8rem;
+            letter-spacing: 2px;
+            transition-duration: .4s;
+        }
+        &.done{
+            .index{ background: #67CEA3; }
+            .name{ color: #67CEA3; }
+        }
+        &.current{
+            .index{ background: $primary; }
+            .name{ 
+                color: $primary;
+                font-weight: bold;
+            }
+        }
+    }
+}

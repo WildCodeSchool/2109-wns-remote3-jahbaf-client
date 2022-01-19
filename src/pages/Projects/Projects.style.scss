@@ -1,0 +1,18 @@
+@import 'assets/partials/main';
+
+.projects-page {
+    h1 {
+        @include themify {
+            color: themed( 'textColor' );
+        }
+    }
+    .add-project {
+        @include themify {
+            background-color: themed( 'deepBg' );
+        }
+        font-size: 7rem;
+        color: $primary;
+        height: 230px;
+        width: 150px;
+    }
+}
