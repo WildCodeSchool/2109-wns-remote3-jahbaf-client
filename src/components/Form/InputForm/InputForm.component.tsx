@@ -11,7 +11,8 @@ const InputForm = ({ label, placeholder, isRequired, type, onChange, value, name
                     value={value}
                     className="input"
                     onChange={onChange}
-                    type={type} placeholder={placeholder}
+                    type={type}
+                    placeholder={placeholder}
                     name={name}
                     required={isRequired}
                 />

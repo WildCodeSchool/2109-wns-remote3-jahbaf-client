@@ -7,4 +7,7 @@ export interface ButtonProps {
 
     /** Width to be applied to the button */
     width?: string;
+
+    /** Define if the button is of type submit or button */
+    submit?: boolean;
 }

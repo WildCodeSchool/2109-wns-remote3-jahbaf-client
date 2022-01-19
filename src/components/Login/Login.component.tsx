@@ -1,14 +1,12 @@
 import { Button } from 'components';
 import Form from 'components/Form/Form.component';
-import InputForm from 'components/Form/InputForm/InputForm.component';
+import InputForm from '../Form/InputForm/InputForm.component';
 import React, { useState } from 'react';
 import waves from 'assets/images/waves.svg';
 import beaver from 'assets/images/beaver.png';
 import { ILoginProps } from './Login.props';
 import './Login.style.scss';
 import { emailRegexp, passwordRegexp } from 'helpers/loginValidationPolicy';
-
-//
 
 const Login = () => {
     const [error, setError] = useState({
@@ -82,6 +80,7 @@ const Login = () => {
                             width="100%"
                             content="Login"
                             onClickAction={onLoginSubmit}
+                            submit
                         />
                     </Form>
                 </div>
