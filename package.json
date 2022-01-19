@@ -26,8 +26,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build:image:prod": "docker build -t jahbaf-client",
-    "build:image:dev": "docker build -f Dockerfile.dev -t jahbaf-client-dev",
+    "build:image:prod": "docker build -t jahbaf-client .",
+    "build:image:dev": "docker build -f Dockerfile.dev -t jahbaf-client-dev .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:tooling": "cd tooling && tsc -p tsconfig.json",
