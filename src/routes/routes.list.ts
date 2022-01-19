@@ -21,5 +21,11 @@ export const routes: RouteType[] = [
         component: Projects,
         needsAuth: NeedsAuth.YES,
         exact: true
+    },
+    {
+        path: '/projet',
+        component: Projects,
+        needsAuth: NeedsAuth.YES,
+        exact: true
     }
 ];

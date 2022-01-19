@@ -23,6 +23,7 @@
     justify-content: space-around;
     height: 150px;
   }
+
   @include themify {
     background-color: themed("lightBorder");
   }

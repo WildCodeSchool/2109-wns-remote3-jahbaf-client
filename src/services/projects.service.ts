@@ -7,4 +7,14 @@ export const CREATE_PROJECT_MUTATION = gql`
             name,
             description
       }
-    }`;
+}`;
+
+export const GET_PROJECTS_QUERY = gql`
+query Query {
+  findManyProjects {
+    id
+    name
+    description
+    published
+  }
+}`;
