@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { TaskContainer } from './TaskContainer.component';
 
 const component = () => {
-    return <TaskContainer/>;
+    return <TaskContainer />;
 };
 
 describe('[Component] TaskContainer', () => {
@@ -16,10 +16,5 @@ describe('[Component] TaskContainer', () => {
     afterEach(() => {
         container.remove();
         container = null;
-    });
-
-    it('should display the correct page title', () => {
-        render(component(), container);
-        expect(document.title).toEqual('Ttest');
     });
 });
