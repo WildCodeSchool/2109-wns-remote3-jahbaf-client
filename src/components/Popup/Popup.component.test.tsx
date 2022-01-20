@@ -18,7 +18,12 @@ describe('[Component] Popup', () => {
     });
 
     it('should not have a motion class when not provided', () => {
-        render(<Popup><div>test</div></Popup>, container);
+        render(
+            <Popup>
+                <div>test</div>
+            </Popup>,
+            container
+        );
 
         const popup = fixtures.getPopup();
 
@@ -26,7 +31,12 @@ describe('[Component] Popup', () => {
     });
 
     it('should have a motion class when provided', () => {
-        render(<Popup motion="enter-left"><div>test</div></Popup>, container);
+        render(
+            <Popup motion="enter-right">
+                <div>test</div>
+            </Popup>,
+            container
+        );
 
         const popup = fixtures.getPopup();
 
