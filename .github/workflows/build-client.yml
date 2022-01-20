@@ -34,7 +34,7 @@ jobs:
                   DISCORD_USERNAME: Failure
               uses: Ilshidur/action-discord@master
               with:
-                  args: 'Hey {{ EVENT_PAYLOAD.pull_request.sender }}, your PR https://github.com/WildCodeSchool/2109-wns-remote3-jahbaf-client/pull/{{ EVENT_PAYLOAD.pull_request.number }} failed'
+                  args: 'Hey {{ EVENT_PAYLOAD.pull_request.sender.username }}, your PR https://github.com/WildCodeSchool/2109-wns-remote3-jahbaf-client/pull/{{ EVENT_PAYLOAD.pull_request.number }} failed'
 
             - name: Discord notification success
               if: ${{ success() }}
