@@ -1,0 +1,46 @@
+name: build-client
+
+on:
+    pull_request:
+        branches:
+            - dev
+
+jobs:
+    lint-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code from repo
+              uses: actions/checkout@v2
+
+            - name: Run linter
+              run: |
+                  npm i -g yarn
+                  yarn
+                  yarn lint
+
+    tests-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code from repo
+              uses: actions/checkout@v2
+
+            - name: Run tests on code
+              run: yarn && yarn test
+
+            - name: Discord notification build failure
+              if: ${{ failure() }}
+              env:
+                  DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+                  DISCORD_USERNAME: Failure
+              uses: Ilshidur/action-discord@master
+              with:
+                  args: 'Bad news... PR https://github.com/WildCodeSchool/2109-wns-remote3-jahbaf-client/pull/{{ EVENT_PAYLOAD.pull_request.number }} failed'
+
+            - name: Discord notification success
+              if: ${{ success() }}
+              env:
+                  DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+                  DISCORD_USERNAME: Success
+              uses: Ilshidur/action-discord@master
+              with:
+                  args: 'PR https://github.com/WildCodeSchool/2109-wns-remote3-jahbaf-client/pull/{{ EVENT_PAYLOAD.pull_request.number }} on review'
