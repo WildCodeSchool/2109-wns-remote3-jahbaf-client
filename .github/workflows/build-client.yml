@@ -1,28 +1,28 @@
 name: build-client
 
 on:
-  [push, pull_request]
+    pull_request:
+        branches:
+            - dev
 
 jobs:
-  lint-job:
-    runs-on: ubuntu-latest
-    steps:
+    lint-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code from repo
+              uses: actions/checkout@v2
 
-    - name: Checkout code from repo
-      uses: actions/checkout@v2
+            - name: Run linter
+              run: |
+                  npm i -g yarn
+                  yarn
+                  yarn lint
 
-    - name: Run linter
-      run: |
-        npm i -g yarn
-        yarn
-        yarn lint
+    tests-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code from repo
+              uses: actions/checkout@v2
 
-  tests-job:
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: Checkout code from repo
-      uses: actions/checkout@v2
-
-    - name: Run tests on code
-      run: yarn && yarn test
+            - name: Run tests on code
+              run: yarn && yarn test
