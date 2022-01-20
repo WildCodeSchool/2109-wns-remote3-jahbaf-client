@@ -1,0 +1,27 @@
+@import 'assets/partials/main';
+
+.tasks {
+    @include themify {
+        background: themed( 'darkGradientBg' );
+        border-top: 1px solid themed( 'darkBorder' );
+        border-bottom: 1px solid themed( 'lightBorder' );
+    }
+    box-shadow: inset 0 5px 10px 1px #00000055;
+    .task {
+        padding: .6em .5em;
+        box-sizing: border-box;
+        margin: 0 2px;
+        @include themify {
+            border-top: 0px solid themed( 'lightBorder' );
+            border-bottom: 0px solid themed( 'darkBorder' );
+            color: themed('textColor');
+        }
+        &:hover {
+            @include themify {
+                background: themed( 'gradientBg' );
+                border-top: 1px solid themed( 'lightBorder' );
+                border-bottom: 1px solid themed( 'darkBorder' );
+            }
+        }
+    }
+}

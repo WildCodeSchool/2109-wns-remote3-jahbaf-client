@@ -7,3 +7,11 @@ export const CREATE_TASK = gql`
         }
     }
 `;
+
+export const GET_TASKS_FROM_PROJECT = gql`
+    query SelectAllTasksFromProject($selectAllTasksFromProjectId: String!) {
+        selectAllTasksFromProject(id: $selectAllTasksFromProjectId) {
+            title
+        }
+    }
+`;
