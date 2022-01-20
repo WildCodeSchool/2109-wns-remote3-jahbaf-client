@@ -26,3 +26,21 @@ jobs:
 
             - name: Run tests on code
               run: yarn && yarn test
+
+            - name: Discord notification build failure
+              if: ${{ failure() }}
+              env:
+                  DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+                  DISCORD_USERNAME: Failure
+              uses: Ilshidur/action-discord@master
+              with:
+                  args: 'Les tests de la PR a fail'
+
+            - name: Discord notification success
+              if: ${{ success() }}
+              env:
+                  DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+                  DISCORD_USERNAME: Success
+              uses: Ilshidur/action-discord@master
+              with:
+                  args: 'Les tests ont réussis'
