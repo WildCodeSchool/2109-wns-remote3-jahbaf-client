@@ -34,7 +34,7 @@ jobs:
                   DISCORD_USERNAME: Failure
               uses: Ilshidur/action-discord@master
               with:
-                  args: 'Les tests de la PR a fail'
+                  args: 'Tests on PR https://github.com/WildCodeSchool/2109-wns-remote3-jahbaf-client/pull/${{ EVENT_PAYLOAD.pull_request.id }} failed'
 
             - name: Discord notification success
               if: ${{ success() }}
@@ -43,4 +43,4 @@ jobs:
                   DISCORD_USERNAME: Success
               uses: Ilshidur/action-discord@master
               with:
-                  args: 'Les tests ont réussis'
+                  args: 'The project ${{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
