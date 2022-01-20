@@ -32,7 +32,7 @@ describe('[Component] Popup', () => {
 
     it('should have a motion class when provided', () => {
         render(
-            <Popup motion="enter-right">
+            <Popup motion="enter-left">
                 <div>test</div>
             </Popup>,
             container
