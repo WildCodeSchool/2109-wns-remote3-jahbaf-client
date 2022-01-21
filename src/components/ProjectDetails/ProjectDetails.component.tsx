@@ -18,14 +18,23 @@ export const ProjectCard = ({ project }: ProjectDetailsProps) => {
     ];
     const [isEditMode, setIsEditMode] = useState(false);
     const toggleEditMode = () => { setIsEditMode(!isEditMode); };
-    const [newProjectName, setNewProjectName] = useState(
-        project.name.toUpperCase()
-    );
-    const [newProjectDescription, setNewProjectDescription] = useState(
-        project.description
-    );
+    const [newProjectInfos, setNewProjectInfos] = useState({ name: project.name.toUpperCase(), description: project.description });
     const projectId = window.location.href.substring((window.location.href).indexOf('projet/') + 7);
     const [updateProject] = useMutation(UPDATE_PROJECT);
+
+    const submitUpdatedProjectInfos = (e: any) => {
+        e.preventDefault();
+        updateProject({
+            variables: {
+                projectInput: {
+                    id: projectId,
+                    name: newProjectInfos.name,
+                    description: newProjectInfos.description
+                }
+            }
+        });
+        setIsEditMode(!isEditMode);
+    };
 
     return (
         <div className="project-details">
@@ -42,28 +51,14 @@ export const ProjectCard = ({ project }: ProjectDetailsProps) => {
                     : (
                         <div className="d-flex" style={{ marginBottom: '1rem' }}>
                             <form
-                                onSubmit={(e) => {
-                                    e.preventDefault();
-                                    updateProject({
-                                        variables: {
-                                            projectInput: {
-                                                id: projectId,
-                                                name: newProjectName,
-                                                description: newProjectDescription
-                                            }
-                                        }
-                                    });
-                                    setIsEditMode(!isEditMode);
-                                }}
+                                onSubmit={submitUpdatedProjectInfos}
                             >
                                 <input
                                     type="text"
                                     style={{ fontSize: 'x-large' }}
                                     defaultValue={project.name.toUpperCase()}
                                     onChange={(e) => {
-                                        setNewProjectName(
-                                            e.target.value.toUpperCase()
-                                        );
+                                        setNewProjectInfos({ name: e.target.value, description: newProjectInfos.description });
                                     }}
                                 />
                                 <button
@@ -115,9 +110,7 @@ export const ProjectCard = ({ project }: ProjectDetailsProps) => {
                                     style={{ fontSize: 'x-large' }}
                                     defaultValue={project.description}
                                     onChange={(e) => {
-                                        setNewProjectDescription(
-                                            e.target.value
-                                        );
+                                        setNewProjectInfos({ name: newProjectInfos.name, description: e.target.value });
                                     }}
                                 />
                             )}
