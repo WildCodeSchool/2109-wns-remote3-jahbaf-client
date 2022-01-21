@@ -1,0 +1,37 @@
+@import 'assets/partials/main';
+
+.project-details {
+    @include themify {
+        color: themed( 'textColor' );
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .project-details__header {
+        margin-bottom: 1rem;
+        .project-details__header__name {
+            @include roboto-bold;
+            font-size: x-large;
+            letter-spacing: 3px;
+        }
+    }
+    .project-details__body {
+        @include row;
+        @include themify {
+            color: themed( 'textColor' );
+        }
+        padding: .5rem;
+        width: 80vw;
+        .project-details__body__description {
+            margin-left: 2rem;
+        }
+        .project-details__body__description__title, .project-details__body__team__title {
+            @include roboto-bold;
+            margin-bottom: .5rem;
+        }
+        .project-details__body__team__members {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

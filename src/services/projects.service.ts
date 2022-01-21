@@ -9,6 +9,7 @@ export const CREATE_PROJECT_MUTATION = gql`
       }
 }`;
 
+<<<<<<< HEAD
 export const GET_PROJECTS_QUERY = gql`
 query Query {
   findManyProjects {
@@ -18,3 +19,14 @@ query Query {
     published
   }
 }`;
+=======
+export const FIND_ONE_PROJECT_BY_ID = gql`
+    query FindProjectById($id: String!) {
+        findProjectById(id: $id) {
+            id
+            name
+            description
+        }
+    }
+`;
+>>>>>>> dev

@@ -1,4 +1,5 @@
 import { Projects } from 'pages/Projects';
+import { Project } from 'pages/Project';
 
 /* eslint no-unused-vars: 0 */
 export enum NeedsAuth {
@@ -23,8 +24,8 @@ export const routes: RouteType[] = [
         exact: true
     },
     {
-        path: '/projet',
-        component: Projects,
+        path: '/projet/:id',
+        component: Project,
         needsAuth: NeedsAuth.YES,
         exact: true
     }
