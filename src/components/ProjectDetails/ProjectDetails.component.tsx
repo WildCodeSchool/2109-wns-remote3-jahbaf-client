@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ProjectDetailsProps } from './ProjectDetails.props';
 import { UPDATE_PROJECT } from 'services/projects.service';
@@ -19,7 +20,7 @@ export const ProjectCard = ({ project }: ProjectDetailsProps) => {
     const [isEditMode, setIsEditMode] = useState(false);
     const toggleEditMode = () => { setIsEditMode(!isEditMode); };
     const [newProjectInfos, setNewProjectInfos] = useState({ name: project.name.toUpperCase(), description: project.description });
-    const projectId = window.location.href.substring((window.location.href).indexOf('projet/') + 7);
+    const { id: projectId } = useParams < { id: string }>();
     const [updateProject] = useMutation(UPDATE_PROJECT);
 
     const submitUpdatedProjectInfos = (e: any) => {
