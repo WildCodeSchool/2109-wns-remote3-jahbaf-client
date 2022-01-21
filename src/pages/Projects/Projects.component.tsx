@@ -1,4 +1,4 @@
-import { useLazyQuery, useMutation } from '@apollo/client';
+import { useLazyQuery, useMutation, useApolloClient } from '@apollo/client';
 import { Card, Popup, ProjectCreationContent } from 'components';
 import { Project } from 'components/Project';
 import { IProject } from 'models';
@@ -10,13 +10,21 @@ import { displayNotification } from 'store/notification';
 import './Projects.style.scss';
 
 export const Projects = () => {
+    const cache = useApolloClient().cache;
     const [isProjectCreationOpened, toggleProjectCreationPopup] = useState(false);
     const [fetchedProjects, setFetchedProjects] = useState<IProject[]>([]);
     const dispatch = useDispatch();
     const history = useHistory();
     const [fetchProjects, { data: projectsData }] = useLazyQuery(GET_PROJECTS_QUERY);
     const [addProject, { loading }] = useMutation(CREATE_PROJECT_MUTATION, {
-        onCompleted: (data) => {
+        onCompleted: (data: any) => {
+            const result = cache.readQuery<any, void>({ query: GET_PROJECTS_QUERY });
+            cache.writeQuery({
+                query: GET_PROJECTS_QUERY,
+                data: {
+                    findManyProjects: [...result?.findManyProjects, data.createProject]
+                }
+            });
             /** Redirect to the project page if data is available when project is created */
             history.push(`/projet/${data?.createProject.id}`);
             /** Trigger success notification */
@@ -45,7 +53,6 @@ export const Projects = () => {
         <div className="projects-page">
             <h1>Mes projets</h1>
             <div className="projects projects--wrapper">
-                <button className="add-project" onClick={() => toggleProjectCreationPopup(true)}>+</button>
                 {fetchedProjects?.map((project) => {
                     const { name, description, id } = project;
                     console.log(name);
@@ -55,6 +62,7 @@ export const Projects = () => {
                         </div>
                     );
                 })}
+                <button className="add-project" onClick={() => toggleProjectCreationPopup(true)}>+</button>
             </div>
             {isProjectCreationOpened &&
                 <Popup motion="enter-left">
