@@ -35,3 +35,33 @@
         }
     }
 }
+
+.d-flex {
+    display: flex;
+}
+
+
+.hoverEdit:hover {
+    cursor: text;
+    &::after {
+        content: "\270F";
+        display: inline-block;
+        transform: rotate(115deg);
+    }
+}
+
+.description__icon {
+    margin-left: 10px;
+    padding-inline: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.name__icon {
+    margin-left: 10px;
+    padding-inline: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: none;
+    background-color: transparent;
+}

@@ -18,3 +18,13 @@ export const FIND_ONE_PROJECT_BY_ID = gql`
         }
     }
 `;
+
+export const UPDATE_PROJECT = gql`
+    mutation UpdateProject($projectInput: UpdateProjectInput!) {
+        updateProject(projectInput: $projectInput) {
+            id,
+            name,
+            description
+        }
+    }
+`;
