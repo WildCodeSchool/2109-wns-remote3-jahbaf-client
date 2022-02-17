@@ -1,6 +1,9 @@
 @import 'assets/partials/main';
 
 .project-details {
+    .card {
+        width: 100%;
+    }
     @include themify {
         color: themed( 'textColor' );
     }
@@ -21,7 +24,6 @@
             color: themed( 'textColor' );
         }
         padding: .5rem;
-        width: 80vw;
         .project-details__body__description {
             margin-left: 2rem;
         }
