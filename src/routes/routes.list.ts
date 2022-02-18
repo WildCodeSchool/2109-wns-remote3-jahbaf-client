@@ -1,7 +1,6 @@
-import { Projects } from 'pages/Projects';
-import { Project } from 'pages/Project';
-
 import Login from 'components/Login/Login.component';
+import Signup from 'components/Signup/Signup.component';
+import { Routes } from './Routes.enum';
 
 /* eslint no-unused-vars: 0 */
 export enum NeedsAuth {
@@ -20,8 +19,13 @@ export type RouteType = {
 
 export const routes: RouteType[] = [
     {
-        path: '/login',
+        path: Routes.LOGIN,
         component: Login,
+        needsAuth: NeedsAuth.NO
+    },
+    {
+        path: Routes.SIGNUP,
+        component: Signup,
         needsAuth: NeedsAuth.NO
     }
 ];
