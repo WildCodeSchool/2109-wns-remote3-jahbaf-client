@@ -1,6 +1,9 @@
 @import 'assets/partials/main';
 
 .project-details {
+    .card {
+        width: 100%;
+    }
     @include themify {
         color: themed( 'textColor' );
     }
@@ -21,7 +24,6 @@
             color: themed( 'textColor' );
         }
         padding: .5rem;
-        width: 80vw;
         .project-details__body__description {
             margin-left: 2rem;
         }
@@ -34,4 +36,34 @@
             grid-template-columns: 1fr 1fr;
         }
     }
+}
+
+.d-flex {
+    display: flex;
+}
+
+
+.hoverEdit:hover {
+    cursor: text;
+    &::after {
+        content: "\270F";
+        display: inline-block;
+        transform: rotate(115deg);
+    }
+}
+
+.description__icon {
+    margin-left: 10px;
+    padding-inline: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.name__icon {
+    margin-left: 10px;
+    padding-inline: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: none;
+    background-color: transparent;
 }

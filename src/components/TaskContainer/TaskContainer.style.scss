@@ -1,1 +1,29 @@
 @import 'assets/partials/main';
+
+.task-container {
+    margin-top: 1em;
+    width: 100%;
+    .card {
+        width: 100%;
+    }
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        >h2 {
+            text-transform: capitalize;
+            font-size: 1em;
+            letter-spacing: 1px;
+            @include themify {
+                color: themed( 'textColor' );
+            }
+        }
+        >button {
+            background: none;
+            border: none;
+            color: $primary;
+            font-weight: bold;
+            font-size: 2.5em;
+        }
+    }
+}

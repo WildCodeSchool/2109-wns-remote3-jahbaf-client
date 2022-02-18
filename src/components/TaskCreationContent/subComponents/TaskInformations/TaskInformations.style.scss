@@ -1,0 +1,26 @@
+@import 'assets/partials/main';
+
+.task-informations {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include themify {
+        color: themed( 'textColor' );
+    }
+    input, textarea{
+        width: 100%;
+        padding: calc($spacer / 2);
+        box-sizing: border-box;
+        margin: calc($spacer * 0.8) 0;
+        border: none;
+        @include radius;
+        @include roboto;
+        @include themify {
+            background-color: themed( 'deepBg' );
+            border-top: 1px solid themed('darkBorder');
+            border-bottom: 1px solid themed('lightBorder');
+            color: themed( 'textColor' );
+        }
+        resize: none;
+    }
+}
