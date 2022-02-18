@@ -1,15 +1,15 @@
 import { InputFormProps } from './InputForm.props';
 import './InputForm.style.scss';
 
-const InputForm = ({ label, placeholder, isRequired, type, onChange, value, name }: InputFormProps): any => {
+const InputForm = ({ className, label, placeholder, isRequired, type, onChange, value, name }: InputFormProps): any => {
     return (
         <div className="input--wrapper">
             {label &&
-           <label htmlFor="uname"><b>{label}</b></label>}
+           <label htmlFor={name} ><b>{label}</b></label>}
             {isRequired
                 ? <input
                     value={value}
-                    className="input"
+                    className={`input ${className}`}
                     onChange={onChange}
                     type={type}
                     placeholder={placeholder}
@@ -18,7 +18,7 @@ const InputForm = ({ label, placeholder, isRequired, type, onChange, value, name
                 />
                 : <input
                     value={value}
-                    className="input"
+                    className={`input ${className}`}
                     onChange={onChange}
                     type={type}
                     placeholder={placeholder}

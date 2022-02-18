@@ -7,5 +7,6 @@ export interface InputFormProps {
   isRequired?: boolean;
   label?: string;
   type?: 'checkbox' | 'password' | 'number' | 'email' | 'text';
-  name?: string
+  name?: string;
+  className?: string;
 }

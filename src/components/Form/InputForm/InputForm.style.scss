@@ -3,11 +3,13 @@
 
 .input {
   border: 1px solid #ccc;
-  @include radius;
   padding: 5px;
-  margin: 5px 0;
+  margin: 10px 0;
   outline: none;
   border: none;
+  height: 25px;
+  width: 100%;
+  @include radius;
   &:active, &:focus {
     outline: 2px rgba($primary, 0.3) solid;
   }
