@@ -1,5 +1,7 @@
 import { Switch } from 'components/Navigation/subComponents/Switch';
 import { Link } from 'react-router-dom';
+import { Routes } from 'routes/Routes.enum';
+
 import { NavigationDesktopProps } from './NavigationDesktop.props';
 
 import './NavigationDesktop.style.scss';
@@ -8,7 +10,7 @@ export const NavigationDesktop = ({ onSwitchTheme, currentTheme }: NavigationDes
     <div className="navigation-desktop">
         <h1>JAHBAF</h1>
         <nav>
-            <Link to="/projets">Projets</Link>
+            <Link to={Routes.PROJECTS}>Projets</Link>
         </nav>
         <Switch onSwitch={onSwitchTheme} currentValue={currentTheme} />
     </div>

@@ -2,6 +2,7 @@ import { Button } from 'components';
 import Form from 'components/Form/Form.component';
 import InputForm from '../Form/InputForm/InputForm.component';
 import React, { useState } from 'react';
+import { setContext } from '@apollo/client/link/context';
 import waves from 'assets/images/waves.svg';
 import beaver from 'assets/images/beaver.png';
 import { ILoginProps } from './Login.props';
@@ -21,7 +22,13 @@ const Login = () => {
     });
 
     const [loginUser] = useLazyQuery(LOGIN_QUERY, {
-        onCompleted: () => {
+        onCompleted: ({ login }) => {
+            localStorage.setItem('session_id', login);
+            setContext(() => ({
+                headers: {
+                    Authorization: localStorage.getItem('session_id')
+                }
+            }));
             history.push(Routes.HOME);
         },
         onError: (error) => {
