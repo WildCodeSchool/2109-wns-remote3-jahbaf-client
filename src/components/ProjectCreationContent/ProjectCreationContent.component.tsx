@@ -1,7 +1,7 @@
 import { Button, Loader } from 'components';
 import { useState } from 'react';
 import { ProjectCreationContentProps } from './ProjectCreationContent.props';
-import { CreateProjectInfos } from 'models';
+import { IProject } from 'models';
 import { ProjectInformations, StatusBar } from './subComponents';
 import './ProjectCreationContent.style.scss';
 
@@ -9,7 +9,7 @@ const steps = ['Informations', 'Membres', 'Recapitulatif'];
 
 export const ProjectCreationContent = ({ onSubmitAction, isLoading }: ProjectCreationContentProps) => {
     const [currentStep, setCurrentStep] = useState<number>(1);
-    const [projectInfos, setProjectInfos] = useState<CreateProjectInfos>({
+    const [projectInfos, setProjectInfos] = useState<Pick<IProject, 'name' | 'description'>>({
         name: '',
         description: ''
     });
