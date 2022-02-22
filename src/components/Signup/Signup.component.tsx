@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from 'components';
 import Form from 'components/Form/Form.component';
@@ -9,14 +9,14 @@ import waves from 'assets/images/waves.svg';
 import beaver from 'assets/images/beaver.png';
 import { useMutation } from '@apollo/client';
 import { SIGNUP_MUTATION } from 'services/auth.service';
-import { Routes as RoutesEnum } from '../../routes/Routes.enum';
 import { emailRegexp, passwordRegexp } from 'helpers/loginValidationPolicy';
 import './Signup.style.scss';
 import { onInputChange } from 'helpers/auth.helpers';
+import { useSetHeaders } from 'hooks/useSetHeaders.hook';
+import { Routes } from 'routes/Routes.enum';
 
 const Signup = () => {
     const history = useHistory();
-    console.log(history);
     const [formValidation, setFormValidation] = useState<ISignupValidationProps>({
         nicknameValidation: '',
         emailValidation: '',
@@ -33,8 +33,9 @@ const Signup = () => {
     });
 
     const [signupSubmit] = useMutation(SIGNUP_MUTATION, {
-        onCompleted: () => {
-            history.push(RoutesEnum.HOME);
+        onCompleted: ({ signUp: token }) => {
+            useSetHeaders(token); // Set session_id in local storage and update context headers then redirect to '/'
+            history.push(Routes.HOME);
         }
     });
 
@@ -50,7 +51,6 @@ const Signup = () => {
 
     useEffect(() => {
         setFormValidation({
-            ...formValidation,
             nicknameValidation: nickname.length < 4
                 ? 'Votre pseudo doit contenir au moins 4 caractères'
                 : '',

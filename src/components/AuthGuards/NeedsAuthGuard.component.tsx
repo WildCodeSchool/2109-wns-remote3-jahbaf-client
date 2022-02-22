@@ -6,10 +6,8 @@ import { Routes } from 'routes/Routes.enum';
 
 const NeedsAuthGuard = ({ children }: any) => {
     const history = useHistory();
-    const { isLoggedIn, loading, data } = useGetSelf();
+    const { isLoggedIn, loading } = useGetSelf();
     useEffect(() => {
-        console.log('loading', loading);
-        console.log('self', data);
         if (!loading) {
             !isLoggedIn && history.push(Routes.LOGIN);
         }

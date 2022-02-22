@@ -9,7 +9,6 @@ const WithoutAuthGuard = ({ children }: any) => {
     const history = useHistory();
     useEffect(() => {
         if (!loading) {
-            console.log('Isloggedin WithoutAuth', isLoggedIn);
             isLoggedIn && history.push(Routes.PROJECTS);
         }
     }, [loading]);

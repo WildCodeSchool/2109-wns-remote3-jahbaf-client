@@ -8,11 +8,7 @@ query loginQuery($email: String!, $password: String!) {
 
 export const SIGNUP_MUTATION: DocumentNode = gql`
 mutation signupMutation($email: String!, $password: String!) {
-  signUp(email: $email, password: $password) {
-    user {
-      email
-    }
-  }
+  signUp(email: $email, password: $password)
 }`;
 
 export const SELF_QUERY: DocumentNode = gql`

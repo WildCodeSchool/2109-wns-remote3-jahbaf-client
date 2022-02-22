@@ -6,8 +6,10 @@ import './NavigationMobile.style.scss';
 import { NavigationMobileProps } from './NavigationMobile.props';
 import { Switch } from 'components/Navigation/subComponents/Switch';
 import { Routes } from 'routes/Routes.enum';
+import { useGetSelf } from 'hooks/useGetSelf.hook';
 
 export const NavigationMobile = ({ onSwitchTheme, currentTheme }: NavigationMobileProps) => {
+    const { isLoggedIn } = useGetSelf();
     const [isMenuOpen, toggleMenu] = useState<boolean>(false);
 
     const onToggleMenu = () => {
@@ -20,7 +22,13 @@ export const NavigationMobile = ({ onSwitchTheme, currentTheme }: NavigationMobi
             <nav className={isMenuOpen ? 'opened' : 'closed'}>
                 <Switch onSwitch={onSwitchTheme} currentValue={currentTheme} />
                 <div className="navigation-links">
-                    <Link onClick={onToggleMenu} to={Routes.PROJECTS}>Projets</Link>
+                    {isLoggedIn
+                        ? <Link onClick={onToggleMenu} to={Routes.PROJECTS}>Projets</Link>
+                        : <div>
+                            <Link onClick={onToggleMenu} to={Routes.LOGIN}>Se connecter</Link>
+                            <Link onClick={onToggleMenu} to={Routes.SIGNUP}>S&apos;inscrire</Link>
+                        </div>
+                    }
                 </div>
             </nav>
             <button className={isMenuOpen ? 'button-opened' : 'button-closed'} onClick={onToggleMenu}>

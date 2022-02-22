@@ -1,8 +1,7 @@
 import { Button } from 'components';
 import Form from 'components/Form/Form.component';
 import InputForm from '../Form/InputForm/InputForm.component';
-import React, { useState } from 'react';
-import { setContext } from '@apollo/client/link/context';
+import { useState } from 'react';
 import waves from 'assets/images/waves.svg';
 import beaver from 'assets/images/beaver.png';
 import { ILoginProps } from './Login.props';
@@ -12,6 +11,7 @@ import { useLazyQuery } from '@apollo/client';
 import { LOGIN_QUERY } from 'services/auth.service';
 import { Routes } from 'routes/Routes.enum';
 import { onInputChange } from 'helpers/auth.helpers';
+import { useSetHeaders } from 'hooks/useSetHeaders.hook';
 
 const Login = () => {
     const history = useHistory();
@@ -22,13 +22,8 @@ const Login = () => {
     });
 
     const [loginUser] = useLazyQuery(LOGIN_QUERY, {
-        onCompleted: ({ login }) => {
-            localStorage.setItem('session_id', login);
-            setContext(() => ({
-                headers: {
-                    Authorization: localStorage.getItem('session_id')
-                }
-            }));
+        onCompleted: ({ login: token }) => {
+            useSetHeaders(token); // Set session_id in local storage and update context headers then redirect to '/'
             history.push(Routes.HOME);
         },
         onError: (error) => {
