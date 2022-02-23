@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { Tasks } from './Tasks.component';
 
 const component = () => {
-    return <Tasks/>;
+    return <Tasks tasks={[]} />;
 };
 
 describe('[Component] Tasks', () => {
@@ -20,6 +20,6 @@ describe('[Component] Tasks', () => {
 
     it('should display the correct page title', () => {
         render(component(), container);
-        expect(document.title).toEqual('Ttest');
+        expect(document.title).toEqual('Test');
     });
 });

@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { NavigationMobile } from './NavigationMobile.component';
 import NavigationMobileFixtures from './NavigationMobile.fixtures';
+import { MockedProvider } from '@apollo/client/testing';
 
 describe('[Component] NavigationMobile', () => {
     let container: any = null;
@@ -14,7 +15,9 @@ describe('[Component] NavigationMobile', () => {
         fixtures = new NavigationMobileFixtures();
         render(
             <BrowserRouter>
-                <NavigationMobile currentTheme='dark' onSwitchTheme={mockSwitcher} />
+                <MockedProvider mocks={[]}>
+                    <NavigationMobile currentTheme='dark' onSwitchTheme={mockSwitcher} />
+                </MockedProvider>
             </BrowserRouter>, container);
     });
 
