@@ -1,3 +1,4 @@
+import { useSetHeaders } from 'hooks/useSetHeaders.hook';
 import React from 'react';
 
 /**
@@ -8,4 +9,14 @@ import React from 'react';
 export function onInputChange<T> (e: React.ChangeEvent<HTMLInputElement>, setState: { (value: T): void }, userInput: T): void {
     const { name, value } = e.target;
     setState({ ...userInput, [name]: value });
+}
+
+/**
+ * This function is used to logout the user.
+ * @returns void
+ */
+export function onLogout (): void {
+    localStorage.removeItem('session_id');
+    useSetHeaders('');
+    window.location.reload(); // Force self to refetch
 }

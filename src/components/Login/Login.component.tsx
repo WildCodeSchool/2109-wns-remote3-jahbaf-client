@@ -23,8 +23,9 @@ const Login = () => {
 
     const [loginUser] = useLazyQuery(LOGIN_QUERY, {
         onCompleted: ({ login: token }) => {
-            useSetHeaders(token); // Set session_id in local storage and update context headers then redirect to '/'
-            history.push(Routes.HOME);
+            useSetHeaders(token, 'session_id'); // Set session_id in local storage and update context headers then redirect to '/'
+            window.location.reload(); // Force self to refetch to access protected routes
+            history.push(Routes.PROJECTS);
         },
         onError: (error) => {
             console.log(error);

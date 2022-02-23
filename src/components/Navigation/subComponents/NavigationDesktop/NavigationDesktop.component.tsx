@@ -1,3 +1,4 @@
+import Logout from 'components/Logout/Logout.component';
 import { Switch } from 'components/Navigation/subComponents/Switch';
 import { useGetSelf } from 'hooks/useGetSelf.hook';
 import { Link, useHistory } from 'react-router-dom';
@@ -29,6 +30,7 @@ export const NavigationDesktop = ({ onSwitchTheme, currentTheme }: NavigationDes
                     </div>}
             </nav>
             <Switch onSwitch={onSwitchTheme} currentValue={currentTheme} />
+            {isLoggedIn && <Logout />}
         </div>
     );
 };

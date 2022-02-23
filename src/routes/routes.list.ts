@@ -24,7 +24,7 @@ export const routes: RouteType[] = [
     {
         path: Routes.HOME,
         component: Home,
-        needsAuth: NeedsAuth.DONT_MATTER,
+        needsAuth: NeedsAuth.YES,
         exact: true
     },
     {

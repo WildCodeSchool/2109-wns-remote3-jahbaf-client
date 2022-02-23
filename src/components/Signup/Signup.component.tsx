@@ -34,8 +34,9 @@ const Signup = () => {
 
     const [signupSubmit] = useMutation(SIGNUP_MUTATION, {
         onCompleted: ({ signUp: token }) => {
-            useSetHeaders(token); // Set session_id in local storage and update context headers then redirect to '/'
-            history.push(Routes.HOME);
+            useSetHeaders(token, 'session_id'); // Set session_id in local storage and update context headers then redirect to '/'
+            window.location.reload(); // Force self to refetch to access protected routes
+            history.push(Routes.PROJECTS);
         }
     });
 
