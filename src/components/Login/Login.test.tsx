@@ -22,7 +22,7 @@ describe('[Component] Login', () => {
         container = null;
     });
 
-    test('Should display email/password inputs, button and trigger button', () => {
+    test('Should display email/password inputs, button and submit form', () => {
         render(component(), container);
         expect(container).toMatchSnapshot();
 
@@ -41,12 +41,8 @@ describe('[Component] Login', () => {
         fireEvent.change(passwordInput, { target: { value: 'A1zertyu@' } });
         expect(passwordInput.value).toBe('A1zertyu');
 
-        fireEvent(
-            button,
-            new MouseEvent('click', {
-                bubbles: true,
-                cancelable: true
-            })
-        );
+        const mockFn = jest.fn();
+        fireEvent.submit(button);
+        expect(mockFn).toHaveBeenCalledTimes(1);
     });
 });
