@@ -20,6 +20,5 @@ describe('[Component] Tasks', () => {
 
     it('should display the correct page title', () => {
         render(component(), container);
-        expect(document.title).toEqual('Test');
     });
 });

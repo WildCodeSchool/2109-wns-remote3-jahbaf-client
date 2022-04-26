@@ -39,10 +39,6 @@ describe('[Component] Login', () => {
         fireEvent.change(emailInput, { target: { value: 'aa@aa.aa' } });
         expect(emailInput.value).toBe('aa@aa.aa');
         fireEvent.change(passwordInput, { target: { value: 'A1zertyu@' } });
-        expect(passwordInput.value).toBe('A1zertyu');
-
-        const mockFn = jest.fn();
-        fireEvent.submit(button);
-        expect(mockFn).toHaveBeenCalledTimes(1);
+        expect(passwordInput.value).toBe('A1zertyu@');
     });
 });

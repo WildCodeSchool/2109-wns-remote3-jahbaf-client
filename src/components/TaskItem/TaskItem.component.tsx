@@ -20,7 +20,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
                     </Card>
                 </Popup>
             }
-            <p onClick={() => toggleTaskDisplay(true)} className='task'>{task.title}</p>
+            <p onClick={() => toggleTaskDisplay(true)} className='task'>{task?.title}</p>
         </>
     );
 };
