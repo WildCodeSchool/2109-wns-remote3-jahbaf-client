@@ -5,6 +5,7 @@ export function useGetSelf () {
     const { data, ...rest } = useQuery(SELF_QUERY, {
         fetchPolicy: 'network-only'
     });
+    const isConfirmed = data?.self.user.confirmed;
     const isLoggedIn = Boolean(data?.self.user.email);
-    return { isLoggedIn, data, ...rest };
+    return { isLoggedIn, isConfirmed, data, ...rest };
 }

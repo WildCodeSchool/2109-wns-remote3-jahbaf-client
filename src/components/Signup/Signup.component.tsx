@@ -1,6 +1,4 @@
-import { useHistory } from 'react-router';
 import { useEffect, useState } from 'react';
-
 import { Button } from 'components';
 import Form from 'components/Form/Form.component';
 import InputForm from 'components/Form/InputForm/InputForm.component';
@@ -12,8 +10,10 @@ import { SIGNUP_MUTATION } from 'services/auth.service';
 import { emailRegexp, passwordRegexp } from 'helpers/loginValidationPolicy';
 import './Signup.style.scss';
 import { onInputChange } from 'helpers/auth.helpers';
-import { useSetHeaders } from 'hooks/useSetHeaders.hook';
+import { Popup } from 'components/Popup';
+import { Card } from 'components/Card';
 import { Routes } from 'routes/Routes.enum';
+import { useHistory } from 'react-router';
 
 const Signup = () => {
     const history = useHistory();
@@ -23,6 +23,7 @@ const Signup = () => {
         passwordValidation: '',
         confirmPasswordValidation: ''
     });
+    const [shouldDisplayPopupConfirm, setShouldDisplayPopupConfirm] = useState(false);
     const { nicknameValidation, emailValidation, passwordValidation, confirmPasswordValidation } = formValidation;
     const [triggerValidation, setTriggerValidation] = useState(false);
     const [userInput, setUserInput] = useState<ISignupProps>({
@@ -33,10 +34,8 @@ const Signup = () => {
     });
 
     const [signupSubmit] = useMutation(SIGNUP_MUTATION, {
-        onCompleted: ({ signUp: token }) => {
-            useSetHeaders(token, 'session_id'); // Set session_id in local storage and update context headers then redirect to '/'
-            window.location.reload(); // Force self to refetch to access protected routes
-            history.push(Routes.PROJECTS);
+        onCompleted: () => {
+            setShouldDisplayPopupConfirm(true);
         }
     });
 
@@ -77,6 +76,11 @@ const Signup = () => {
             });
         }
         setTriggerValidation(true);
+    }
+
+    function onPopupClose () {
+        setShouldDisplayPopupConfirm(false);
+        history.push(Routes.LOGIN);
     }
 
     return (
@@ -132,6 +136,19 @@ const Signup = () => {
                 </div>
             </div>
             <img className="login-page--waves" src={waves} alt="Wavy background" />
+            {shouldDisplayPopupConfirm &&
+            <Popup motion="enter-left">
+                <Card
+                    title="Votre inscription est presque terminée"
+                    isClosable={true}
+                    onCloseAction={onPopupClose}
+                    style={{ maxWidth: '40rem' }}
+                >
+                    <p>
+                        Afin de vérifier votre compte, nous venons de vous envoyer un e-mail contenant un lien de confirmation. Si vous n&apos;avez rien reçu, merci de vérifier vos spams. Vous pouvez également essayer de vous renvoyer un nouveau lien en cliquant sur le bouton ci-dessous.
+                    </p>
+                </Card>
+            </Popup>}
         </>
     );
 };

@@ -1,3 +1,4 @@
+import ConfirmAccount from 'components/ConfirmAccount/ConfirmAccount.component';
 import Login from 'components/Login/Login.component';
 import Signup from 'components/Signup/Signup.component';
 import Home from 'pages/Home/Home';
@@ -47,6 +48,12 @@ export const routes: RouteType[] = [
         path: Routes.PROJECT,
         component: Project,
         needsAuth: NeedsAuth.YES,
+        exact: true
+    },
+    {
+        path: Routes.CONFIRM_ACCOUNT,
+        component: ConfirmAccount,
+        needsAuth: NeedsAuth.DONT_MATTER,
         exact: true
     }
 ];

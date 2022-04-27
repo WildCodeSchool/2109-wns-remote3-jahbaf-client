@@ -17,7 +17,13 @@ query selfQuery {
     user {
       name
       email
+      confirmed
     }
   }
 }
 `;
+
+export const CONFIRM_ACCOUNT_MUTATION: DocumentNode = gql`
+mutation confirmAccountMutation($token: String!) {
+  confirmAccount(token: $token)
+}`;

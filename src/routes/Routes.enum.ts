@@ -6,4 +6,5 @@ export enum Routes {
     FORGOT_PASSWORD = '/forgotPassword',
     PROJECTS = '/projects',
     PROJECT = '/project/:id',
+    CONFIRM_ACCOUNT = '/confirm_account&token=:token',
 }
