@@ -20,10 +20,19 @@ query selfQuery {
       confirmed
     }
   }
-}
-`;
+}`;
 
 export const CONFIRM_ACCOUNT_MUTATION: DocumentNode = gql`
 mutation confirmAccountMutation($token: String!) {
   confirmAccount(token: $token)
+}`;
+
+export const SEND_USER_EMAIL_QUERY: DocumentNode = gql`
+query ($email: String!) {
+  resetPasswordMail(email: $email)
+}`;
+
+export const RESET_PASSWORD_MUTATION: DocumentNode = gql`
+mutation ResetPassword($token: String!, $password: String!) {
+  resetPassword(token: $token, password: $password)
 }`;

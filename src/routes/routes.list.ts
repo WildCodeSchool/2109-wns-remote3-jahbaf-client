@@ -1,5 +1,7 @@
 import ConfirmAccount from 'components/ConfirmAccount/ConfirmAccount.component';
+import ForgotPassword from 'components/ForgotPassword/ForgotPassword.component';
 import Login from 'components/Login/Login.component';
+import ResetPassword from 'components/ResetPassword/ResetPassword.component';
 import Signup from 'components/Signup/Signup.component';
 import Home from 'pages/Home/Home';
 import { Project } from 'pages/Project';
@@ -53,7 +55,19 @@ export const routes: RouteType[] = [
     {
         path: Routes.CONFIRM_ACCOUNT,
         component: ConfirmAccount,
-        needsAuth: NeedsAuth.DONT_MATTER,
+        needsAuth: NeedsAuth.NO,
+        exact: true
+    },
+    {
+        path: Routes.FORGOT_PASSWORD,
+        component: ForgotPassword,
+        needsAuth: NeedsAuth.NO,
+        exact: true
+    },
+    {
+        path: Routes.RESET_PASSWORD,
+        component: ResetPassword,
+        needsAuth: NeedsAuth.NO,
         exact: true
     }
 ];
