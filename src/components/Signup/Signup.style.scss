@@ -3,6 +3,17 @@
     width: 100%;
 }
 
-.signup__title {
-  text-align: center;
+
+.signup__form {
+  & button {
+    width: 100%;
+  }
+
+  .signup__title {
+    text-align: center;
+  }
+}
+
+.card {
+  max-width: 40rem;
 }
