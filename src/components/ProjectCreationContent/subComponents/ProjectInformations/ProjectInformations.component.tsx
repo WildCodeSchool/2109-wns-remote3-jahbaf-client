@@ -10,6 +10,12 @@ export const ProjectInformations = ({ projectInfos, updateProjectInfos }: Projec
             placeholder="Nom de votre projet"
             value={projectInfos.name}
             onChange={(e) => updateProjectInfos({ name: e.target.value })} />
+        <input
+            type="text"
+            name="role"
+            placeholder="Votre role sur le projet"
+            value={projectInfos.role}
+            onChange={(e) => updateProjectInfos({ role: e.target.value })} />
         <label>
             Description du projet
             <textarea

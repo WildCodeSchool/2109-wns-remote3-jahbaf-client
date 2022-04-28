@@ -11,7 +11,8 @@ export const ProjectCreationContent = ({ onSubmitAction, isLoading }: ProjectCre
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [projectInfos, setProjectInfos] = useState<CreateProjectInfos>({
         name: '',
-        description: ''
+        description: '',
+        role: ''
     });
 
     /**
@@ -22,7 +23,7 @@ export const ProjectCreationContent = ({ onSubmitAction, isLoading }: ProjectCre
             // Show error notification
         } else {
             currentStep === steps.length
-                ? onSubmitAction({ variables: { projectInput: { name: projectInfos.name, description: projectInfos.description } } })
+                ? onSubmitAction({ variables: { projectInput: { projectName: projectInfos.name, description: projectInfos.description, roleName: projectInfos.roleName } } })
                 : setCurrentStep(currentStep + 1);
         }
     };
