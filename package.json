@@ -12,6 +12,7 @@
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.0",
+    "@types/uuid": "^8.3.3",
     "graphql": "^15.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -23,6 +24,7 @@
     "redux": "^4.1.2",
     "sass": "^1.43.4",
     "typescript": "^4.1.2",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -37,7 +39,8 @@
     "prepare": "husky install",
     "lint": "lint-staged",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fix:lints": "standardx src/**/*.ts src/**/*.tsx --fix"
   },
   "schematics": "./tooling/src/collection.json",
   "keywords": [
@@ -80,7 +83,8 @@
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
-    "pretty-quick": "^3.1.1"
+    "pretty-quick": "^3.1.1",
+    "standardx": "3.0.0"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
