@@ -31,7 +31,7 @@ const Login = () => {
             console.log(error);
         }
     });
-
+    console.log('backend url', process.env.BACKEND_URL);
     const { email, password } = userInput;
     function onLoginSubmit (): void {
         loginUser({

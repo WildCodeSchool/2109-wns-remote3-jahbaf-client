@@ -88,7 +88,7 @@ const Signup = () => {
             <div className="login">
                 <div className="login__card">
                     <img className="beaver-logo" src={beaver} alt="" />
-                    <Form classname="signup__form">
+                    <Form className="signup__form">
                         <h1 className='signup__title'>S&apos;inscrire</h1>
                         <InputForm
                             name="nickname"
@@ -142,7 +142,6 @@ const Signup = () => {
                     title="Votre inscription est presque terminée"
                     isClosable={true}
                     onCloseAction={onPopupClose}
-                    style={{ maxWidth: '40rem' }}
                 >
                     <p>
                         Afin de vérifier votre compte, nous venons de vous envoyer un e-mail contenant un lien de confirmation. Si vous n&apos;avez rien reçu, merci de vérifier vos spams. Vous pouvez également essayer de vous renvoyer un nouveau lien en cliquant sur le bouton ci-dessous.
