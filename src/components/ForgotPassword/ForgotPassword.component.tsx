@@ -4,14 +4,20 @@ import { Card } from 'components/Card';
 import InputForm from 'components/Form/InputForm/InputForm.component';
 import { emailRegexp } from 'helpers/loginValidationPolicy';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+import { Routes } from 'routes/Routes.enum';
 import { SEND_USER_EMAIL_QUERY } from 'services/auth.service';
 import './ForgotPassword.style.scss';
 
 const ForgotPassword = () => {
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [formValidation, setFormValidation] = useState<boolean>();
     const [sendUserEmail] = useLazyQuery(SEND_USER_EMAIL_QUERY, {
-        onCompleted: () => setEmail('')
+        onCompleted: () => {
+            setEmail('');
+            history.push(Routes.LOGIN);
+        }
     });
 
     useEffect(() => {
