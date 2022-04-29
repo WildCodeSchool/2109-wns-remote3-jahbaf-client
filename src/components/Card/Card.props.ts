@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface CardProps {
     /** Content to be displayed inside the card */
     children: JSX.Element;
@@ -10,4 +12,7 @@ export interface CardProps {
 
     /** Title to be displayed on the card */
     title?: string;
+
+    /** Style to apply to the card */
+    style?: React.CSSProperties;
 }

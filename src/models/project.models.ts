@@ -6,7 +6,9 @@ export interface IProject {
 }
 export interface CreateProjectInfos {
     name: string,
-    description?: string
+    role: string,
+    description?: string,
+    roleName?: string,
 };
 
 export interface Project {

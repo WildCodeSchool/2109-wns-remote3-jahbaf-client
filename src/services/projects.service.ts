@@ -27,3 +27,13 @@ query FindProjectById($id: String!) {
     }
 }
 `;
+
+export const UPDATE_PROJECT = gql`
+    mutation UpdateProject($projectInput: UpdateProjectInput!) {
+        updateProject(projectInput: $projectInput) {
+            id,
+            name,
+            description
+        }
+    }
+`;
