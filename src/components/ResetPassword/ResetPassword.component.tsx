@@ -11,6 +11,7 @@ import { onInputChange } from 'helpers/auth.helpers';
 import { Button } from 'components/Button';
 import { Routes } from 'routes/Routes.enum';
 import { useSetHeaders } from 'hooks/useSetHeaders.hook';
+import './ResetPassword.style.scss';
 
 const ResetPassword = () => {
     const history = useHistory();
@@ -46,6 +47,7 @@ const ResetPassword = () => {
     }, [userInput]);
 
     const { token } = useParams<{ token: string }>();
+
     function onResetPasswordSubmit () {
         if (password === confirmPassword) {
             resetPassword({
@@ -62,7 +64,7 @@ const ResetPassword = () => {
         <div className="login">
             <div className="login__card">
                 <img className="beaver-logo" src={beaver} alt="" />
-                <Form classname="signup__form">
+                <Form className="signup__form">
                     <h1 className='signup__title'>Nouveau mot de passe</h1>
                     <InputForm
                         name="password"
@@ -83,7 +85,6 @@ const ResetPassword = () => {
                     />
                     {triggerValidation && confirmPasswordValidation && <p className="form-error">{confirmPasswordValidation}</p>}
                     <Button
-                        width="100%"
                         content="ENVOYER"
                         onClickAction={onResetPasswordSubmit}
                         submit
