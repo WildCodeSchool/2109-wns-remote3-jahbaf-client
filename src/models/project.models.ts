@@ -1,7 +1,8 @@
 export interface CreateProjectInfos {
     name: string,
     role: string,
-    description?: string
+    description?: string,
+    roleName?: string,
 };
 
 export interface Project {
